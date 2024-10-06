@@ -1,2 +1,11 @@
 Screen1/node_modules/
+Screen1/app.json
+Screen1/babel.config.js
+Screen1/package-lock.json
+Screen1/package.json
+
 Screen2/node_modules/
+Screen2/app.json
+Screen2/babel.config.js
+Screen2/package-lock.json
+Screen2/package.json
