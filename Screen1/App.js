@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import Feather from '@expo/vector-icons/Feather';
+import AntDesign from '@expo/vector-icons/AntDesign';
+
 
 const mockData = [
   {
@@ -22,7 +25,7 @@ const mockData = [
   },
   {
     id: '3',
-    image: require('./assets/xa_can_cau.png'),
+    image: require('./assets/xe_can_cau.png'),
     title: 'Xe cần cẩu đa năng',
     shop: {
       name: 'Thế giới đồ chơi',
@@ -111,7 +114,7 @@ const ChatScreen = () => {
       {/* Notice */}
       <View style={styles.noticeContainer}>
         <Text style={styles.noticeText}>
-          Bạn có thắc mắc với sản phẩm vừa xem. Đừng ngại chát với shop!
+          Bạn có thắc mắc với sản phẩm vừa xem. Đừng ngại chat với shop!
         </Text>
       </View>
 
@@ -127,23 +130,13 @@ const ChatScreen = () => {
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
         <TouchableOpacity>
-          <View style={styles.menuIcon}>
-            <View style={styles.menuLine} />
-            <View style={styles.menuLine} />
-            <View style={styles.menuLine} />
-          </View>
+          <Feather name="menu" size={24} color="black" style={styles.navIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image 
-            source={require('./assets/home.png')}
-            style={[styles.navIcon, { tintColor: '#FFFFFF' }]}
-          />
+          <Feather name="home" size={24} color="black" style={styles.navIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image 
-            source={require('./assets/back.png')}
-            style={[styles.navIcon, { tintColor: '#FFFFFF' }]}
-          />
+          <AntDesign name="back" size={24} color="black" style={styles.navIcon} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -247,16 +240,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#1BA9FF',
     height: 49,
     paddingHorizontal: 22,
-  },
-  menuIcon: {
-    width: 23,
-    height: 13.85,
-    justifyContent: 'space-between',
-  },
-  menuLine: {
-    width: 23,
-    height: 1,
-    backgroundColor: '#000000',
   },
   navIcon: {
     width: 23,
