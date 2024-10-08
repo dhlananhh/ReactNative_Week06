@@ -1,5 +1,4 @@
-// Import Libraries
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -10,7 +9,6 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-
 
 // Mock Data
 const mockData = [
@@ -25,13 +23,12 @@ const mockData = [
   },
 ];
 
-
 // Render Data Product Item
 const ProductItem = ({ item }) => {
   return (
     <View style={styles.container}>
       <View style={styles.bgItem}>
-        <Image source={item.image} style={styles.productImage} />
+        <Image source={item.image} style={styles.productImage} resizeMode="contain" />
       </View>
       <Text style={styles.productName}>{item.name}</Text>
       <View style={styles.priceContainer}>
@@ -54,11 +51,9 @@ const ProductItem = ({ item }) => {
   );
 };
 
-
 // Component: Product Page
 const ProductPage = () => {
-  // Load Fonts
-  const [ fontsLoaded ] = useFonts({
+  const [fontsLoaded] = useFonts({
     'Voltaire': require('./assets/fonts/Voltaire-Regular.ttf'),
   });
 
@@ -71,107 +66,91 @@ const ProductPage = () => {
       data={mockData}
       renderItem={({ item }) => <ProductItem item={item} />}
       keyExtractor={item => item.id}
+      contentContainerStyle={styles.pageContainer}
     />
   );
 };
 
-
 // CSS StyleSheet
 const styles = StyleSheet.create({
+  pageContainer: {
+    flexGrow: 1,
+    paddingHorizontal: 16,
+    backgroundColor: '#FFF',
+  },
   container: {
-    width: 375,
-    height: 812,
+    flex: 1,
+    marginVertical: 10,
+    padding: 16,
     backgroundColor: '#FFF',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#000',
   },
   bgItem: {
-    width: 359,
-    height: 388,
+    flex: 1,
     backgroundColor: 'rgba(233, 65, 65, 0.1)',
     borderRadius: 5,
-    marginLeft: 8,
-    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
   },
   productImage: {
-    width: 297,
-    height: 340,
-    marginLeft: 37,
-    marginTop: 36,
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1.5, // Điều chỉnh tỷ lệ để hiển thị đầy đủ hình ảnh
   },
   productName: {
-    position: 'absolute',
-    left: 8,
-    top: 416,
     fontFamily: 'Voltaire',
-    fontSize: 35,
-    lineHeight: 44,
+    fontSize: 28,
     color: '#000',
+    textAlign: 'center',
+    marginBottom: 10,
   },
   priceContainer: {
     flexDirection: 'row',
-    position: 'absolute',
-    left: 15,
-    top: 467,
+    justifyContent: 'space-between',
+    marginBottom: 10,
   },
   discountedPrice: {
     fontFamily: 'Voltaire',
-    fontSize: 25,
-    lineHeight: 31,
+    fontSize: 20,
     color: 'rgba(0, 0, 0, 0.59)',
   },
   originalPrice: {
     fontFamily: 'Voltaire',
-    fontSize: 25,
-    lineHeight: 31,
+    fontSize: 20,
     textDecorationLine: 'line-through',
     color: '#000',
-    marginLeft: 10,
   },
   descriptionTitle: {
-    position: 'absolute',
-    left: 14,
-    top: 523,
     fontFamily: 'Voltaire',
-    fontSize: 25,
-    lineHeight: 31,
+    fontSize: 18,
     color: '#000',
+    marginBottom: 6,
   },
   descriptionText: {
-    position: 'absolute',
-    width: 355,
-    left: 14,
-    top: 585,
     fontFamily: 'Voltaire',
-    fontSize: 22,
-    lineHeight: 27,
+    fontSize: 16,
     color: 'rgba(0, 0, 0, 0.57)',
+    marginBottom: 10,
   },
   heartIcon: {
-    position: 'absolute',
-    left: 19,
-    top: 735,
-    width: 35,
-    height: 35,
+    alignSelf: 'flex-start',
+    marginBottom: 16,
   },
   addToCartButton: {
-    position: 'absolute',
-    width: 269,
-    height: 54,
-    left: 85,
-    top: 726,
     backgroundColor: '#E94141',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 12,
   },
   addToCartText: {
     fontFamily: 'Voltaire',
-    fontSize: 25,
+    fontSize: 18,
     color: '#FFFAFA',
   },
 });
-
 
 export default ProductPage;
