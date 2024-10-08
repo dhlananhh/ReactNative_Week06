@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  FlatList, 
+  Image, 
+  TouchableOpacity, 
+  SafeAreaView 
+} from 'react-native';
 import { HeartIcon } from 'react-native-heroicons/outline';
 import { useFonts } from 'expo-font';
 
+
+// Component: BikeShop
 const BikeShop = () => {
   const [bikes, setBikes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
